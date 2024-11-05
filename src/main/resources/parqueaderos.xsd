@@ -1,0 +1,40 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://pdyp.com/soap_service"
+           targetNamespace="http://pdyp.com/soap_service" elementFormDefault="qualified">
+
+    <xs:element name="getParqueaderoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="getParqueaderoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="parqueadero" type="tns:parqueadero"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="parqueadero">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="nombre" type="xs:string"/>
+            <xs:element name="capacidad" type="xs:int"/>
+            <xs:element name="direccion" type="xs:string"/>
+            <xs:element name="administrador" type="xs:string"/>
+            <xs:element name="ciudad" type="tns:ciudad"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="ciudad">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Medellín"/>
+            <xs:enumeration value="Cali"/>
+            <xs:enumeration value="Bogotá"/>
+            <xs:enumeration value="Barranquilla"/>
+            <xs:enumeration value="Bucaramanga"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
